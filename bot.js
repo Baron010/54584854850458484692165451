@@ -510,8 +510,8 @@ client.on('ready', () => {
        ✏  You are the member number **${member.guild.memberCount}** `)
        .setTitle("Don't forget rules the clan to avoid the ban")
        .setURL('https://discord.gg/4thpgcf')
-      .setImage('https://cdn.discordapp.com/attachments/486308999600406567/486363571320651776/welcome_png_33285.png')
-      .setFooter('S bot','https://images-ext-1.discordapp.net/external/ghakqWfpMUSOlSXoGT59aelUaToCX_tYDak1aDGiMvQ/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/455431912811528192/b4bb8f39fa9502c6ee6bcdece5013b16.png?width=520&height=520')
+      .setImage('https://cdn.discordapp.com/attachments/470319916537348099/488176391288913920/Sans-Simple-Green.gif')
+      .setFooter('S bot','https://cdn.discordapp.com/avatars/464139412251344897/f537769c6c17e31bb6969ef14c64ec61.png')
       channel.send(embed);
     }).catch(console.error)
   })

@@ -905,7 +905,7 @@ client.on('ready', () => {
     if (!channel) return;
   
     let embed = new Discord.RichEmbed()
-       .setColor("BLACK")
+       .setColor(message.guild.me.highestRole.color) 
        .setAuthor("S bot logs")
   .setTitle('Message deleted')
   .addField(`BY`,`<@${message.author.id}>`,true)
@@ -1428,6 +1428,35 @@ client.on('ready', () => {
   })
   }
   });
+
+
+const weather = require('weather-js');
+ client.on('message', message => {
+     if(message.content.startsWith(prefix + "meteo")) {
+         var args = message.content.split(" ").slice(1);
+ weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result) {
+      if (err) message.channel.send(err);
+      if (result === undefined || result.length === 0) {
+          message.channel.send('**Please enter a location!**')
+          return;
+      }
+      var current = result[0].current;
+      var location = result[0].location;
+      const embed = new Discord.RichEmbed()
+          .setDescription(`**${current.skytext}**`)
+          .setAuthor(`Weather for ${current.observationpoint}`)
+          .setThumbnail(current.imageUrl)
+          .setColor(message.guild.me.highestRole.color) 
+          .addField('Timezone',`UTC${location.timezone}`, true)
+          .addField('Degree Type',location.degreetype, true)
+          .addField('Temperature',`${current.temperature} Degrees`, true)
+          .addField('Feels Like', `${current.feelslike} Degrees`, true)
+          .addField('Winds',current.winddisplay, true)
+          .addField('Humidity', `${current.humidity}%`, true)
+          message.channel.send({embed});
+  })
+}
+ });
     
     
     client.on('message',async message => {

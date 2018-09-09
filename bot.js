@@ -1443,5 +1443,4 @@ client.on('ready', () => {
     });
   
 
-  //client.login(process.env.BOT_TOKEN);
-  client.login("NDY1NjExOTg0NDA3MjMyNTMy.DnFyYg.M28AcG1sWDgSGuXaPpFQQSaiwXE");
+client.login(process.env.BOT_TOKEN);

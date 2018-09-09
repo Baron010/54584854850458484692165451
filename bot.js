@@ -1472,4 +1472,17 @@ const weather = require('weather-js');
     });
   
 
+         client.on('message', message => {
+            if (message.author.bot) return;
+             if (message.content === prefix + "invite") {
+            let embed = new Discord.RichEmbed()
+            .setAuthor('Get Gnar on your server!')
+            .setTitle('__**Click to invite Gnar to your server.**__')
+           .setURL('https://discordapp.com/oauth2/authorize?client_id=464139412251344897&scope=bot&permissions=8')
+           message.channel.sendEmbed(embed);
+           }
+        });
+
+
+
 client.login(process.env.BOT_TOKEN);

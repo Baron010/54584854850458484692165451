@@ -1379,5 +1379,21 @@ const weather = require('weather-js');
         });
 
 
+client.on('message', function(msg) {
+  if (msg.content === prefix + "about") {
+    if(!msg.channel.guild) return msg.reply('This command only for servers ⁉');
+    var channels = msg.guild.channels.map(channels => `${channels.name}, `).join(' ')
+    let embed = new Discord.RichEmbed()
+    .setThumbnail(client.user.avatarURL)
+    .addField('Bot Information',`Dros Bot ™ bot is a music bot packed with dank memes to rescue your soul from the depths of the underworld.`)
+    .addField('Text Channels',` ${msg.guild.channels.filter(m => m.type === 'text').size}`,true)
+    .addField('Voice Channels',` ${msg.guild.channels.filter(m => m.type === 'voice').size} `,true)
+    .addField('Guilds' ,`${client.guilds.size}` , true)
+    .addField('Voice Connections' ,`${client.voiceConnections.size}` , true)
+    .addField('Users' ,`${client.users.size}` , true)
+    msg.channel.send({embed:embed});
+  }
+});
+
 
 client.login(process.env.BOT_TOKEN);

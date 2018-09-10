@@ -22,7 +22,7 @@ if (message.content === adminww + 'idle') {
 }
 });
 
-const adminabdo = "!!";
+const adminabdo = "--";
 client.on('message', message => {
 if (message.content === adminabdo + 'online') {
      if (message.author.id !== '406192153979518976') return ;
@@ -30,7 +30,7 @@ if (message.content === adminabdo + 'online') {
 }
 });
 
-const adminben = "!!";
+const adminben = "--";
 client.on('message', message => {
 if (message.content === adminben + 'dnd') {
      if (message.author.id !== '406192153979518976') return ;

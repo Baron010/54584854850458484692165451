@@ -433,14 +433,19 @@ client.on('ready', () => {
   });
   
 
-  client.on('message', async message =>{
+ client.on('message', async message => {
     if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
-        client.users.get("406192153979518976").send(
-          "\n" + `**Message** : ${message.content}`+
-          "\n" + `**Tag** : ${message.author.tag}  **ID** :${message.author.id}` )
-  }
-  });
+        var iiMo = new Discord.RichEmbed()
+        .setColor('BLACK')
+        .setTimestamp()
+        .setTitle('Message in private bot')
+        .setThumbnail(`${message.author.avatarURL}`)
+        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+        .setFooter(`From ${message.author.tag} ${message.author.id}`)
+        client.users.get("406192153979518976").send(iiMo);
+    }
+});
   
   client.on('message', async message =>{
     var roles = {};
@@ -1393,6 +1398,142 @@ client.on('message', function(msg) {
     .addField('Users' ,`${client.users.size}` , true)
     msg.channel.send({embed:embed});
   }
+});
+
+
+const codes = {
+	"a": "𝒶",
+	"b": "𝒷",
+	"c": "𝒸",
+	"d": "𝒹",
+	"e": "𝑒",
+	"f": "𝒻",
+	"g": "𝑔",
+	"h": "𝒽",
+	"i": "𝒾",
+	"j": "𝒿",
+	"k": "𝓀",
+	"l": "𝓁",
+	"m": "𝓂",
+	"n": "𝓃",
+	"o": "𝑜",
+	"p": "𝓅",
+	"q": "𝓆",
+	"r": "𝓇",
+	"s": "𝓈",
+	"t": "𝓉",
+	"u": "𝓊",
+	"v": "𝓋",
+	"w": "𝓌",
+	"x": "𝓍",
+	"y": "𝓎",
+	"z": "𝓏",
+	"A": "𝒜",
+	"B": "𝐵",
+	"C": "𝒞",
+	"D": "𝒟",
+	"E": "𝐸",
+	"F": "𝐹",
+	"G": "𝒢",
+	"H": "𝐻",
+	"I": "𝐼",
+	"J": "𝒥",
+	"K": "𝒦",
+	"L": "𝐿",
+	"M": "𝑀",
+	"N": "𝒩",
+	"O": "𝒪",
+	"P": "𝒫",
+	"Q": "𝒬",
+	"R": "𝑅",
+	"S": "𝒮",
+	"T": "𝒯",
+	"U": "𝒰",
+	"V": "𝒱",
+	"W": "𝒲",
+	"X": "𝒳",
+	"Y": "𝒴",
+	"Z": "𝒵"
+};
+
+client.on('message' , async message => {
+  if (message.content.startsWith(prefix + 'te')) {
+        let args = message.content.split(" ").slice(1)
+if (args.length < 1) {
+  message.channel.send('You must provide some text');
+}
+message.channel.send(args.join(' ').split('').map(c => codes[c] || c).slice(1).join('')
+ 
+);
+};
+});
+
+
+const codesa = {
+	"a": "𝒶",
+	"b": "𝒷",
+	"c": "𝒸",
+	"d": "𝒹",
+	"e": "𝑒",
+	"f": "𝒻",
+	"g": "𝑔",
+	"h": "𝒽",
+	"i": "𝒾",
+	"j": "𝒿",
+	"k": "𝓀",
+	"l": "𝓁",
+	"m": "𝓂",
+	"n": "𝓃",
+	"o": "𝑜",
+	"p": "𝓅",
+	"q": "𝓆",
+	"r": "𝓇",
+	"s": "𝓈",
+	"t": "𝓉",
+	"u": "𝓊",
+	"v": "𝓋",
+	"w": "𝓌",
+	"x": "𝓍",
+	"y": "𝓎",
+	"z": "𝓏",
+	"A": "𝒜",
+	"B": "𝐵",
+	"C": "𝒞",
+	"D": "𝒟",
+	"E": "𝐸",
+	"F": "𝐹",
+	"G": "𝒢",
+	"H": "𝐻",
+	"I": "𝐼",
+	"J": "𝒥",
+	"K": "𝒦",
+	"L": "𝐿",
+	"M": "𝑀",
+	"N": "𝒩",
+	"O": "𝒪",
+	"P": "𝒫",
+	"Q": "𝒬",
+	"R": "𝑅",
+	"S": "𝒮",
+	"T": "𝒯",
+	"U": "𝒰",
+	"V": "𝒱",
+	"W": "𝒲",
+	"X": "𝒳",
+	"Y": "𝒴",
+	"Z": "𝒵"
+};
+
+client.on('message' , async message => {
+  if (message.content.startsWith(prefix + 'teembed')) {
+        let args = message.content.split(" ").slice(1)
+if (args.length < 1) {
+  message.channel.send('You must provide some text');
+}
+let embed = new Discord.RichEmbed()
+.setDescription(args.join(' ').split('').map(c => codesa[c] || c).slice(1).join(''))
+message.channel.send(embed);
+};
 });
 
 

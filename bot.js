@@ -1542,4 +1542,80 @@ message.channel.send(embed);
 });
 
 
+client.on('message', message => {
+  if (message.content.startsWith(prefix +'mo')) {
+    if(!message.channel.guild) return message.reply('This command only for servers ⁉');
+  var Canvas = module.require('canvas');
+  var jimp = module.require('jimp');
+
+  const w = ['./mo/tweet.png'];
+
+   let Image = Canvas.Image,
+   canvas = new Canvas(992, 520),
+   ctx = canvas.getContext('2d');
+   ctx.patternQuality = 'bilinear';
+   ctx.filter = 'bilinear';
+   ctx.antialias = 'subpixel';
+   ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+   ctx.shadowOffsetY = 2;
+   ctx.shadowBlur = 2;
+   fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+       if (err) return console.log(err);
+       let BG = Canvas.Image;
+       let ground = new Image;
+       ground.src = Background;
+       ctx.drawImage(ground, 0, 0, 992, 520);
+
+})
+
+let args = message.content.split(" ").slice(1).join(" ");
+
+var men = message.mentions.users.first();
+var heg;
+if(men) {
+heg = men
+} else {
+heg = message.author
+}
+
+let user = message.mentions.users.first();
+var men = message.mentions.users.first();
+   var heg;
+   if(men) {
+       heg = men
+   } else {
+       heg = message.author
+   }
+ var mentionned = message.mentions.members.first();
+    var h;
+   if(mentionned) {
+       h = mentionned
+   } else {
+       h = message.member
+   }
+   var ment = message.mentions.users.first();
+   var getvalueof;
+if(ment) {
+getvalueof = ment;
+} else {
+getvalueof = message.author;
+}
+let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
+
+jimp.read(url, (err, ava) => {
+if (err) return console.log(err);
+ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+if (err) return console.log(err);
+ctx.font = '30px Arial Bold';
+ctx.fontSize = '30px';
+ctx.fillStyle = "#050202";
+ctx.textAlign = "center";    
+ctx.fillText(`${args}`, 170, 165);
+message.channel.sendFile(canvas.toBuffer());   
+})                       
+})
+}
+});
+
+
 client.login(process.env.BOT_TOKEN);

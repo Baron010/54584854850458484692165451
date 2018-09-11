@@ -841,14 +841,14 @@ client.on('ready', () => {
     .setDescription(`
     🤴 hello master
     ♻ thanks for added the bot in your server 👍
-  1️⃣ **My prefix is** [.]
+  1️⃣ **My prefix is** [-]
   2️⃣ ❔ Important step ⚠ 
-  3️⃣ create channel named 'welcome' and channel named 'log'
-  4️⃣ more info type **.help**
+  3️⃣ create channel named 'welcome' and channel named 'log' and logs
+  4️⃣ more info type **-help**
   5️⃣ easy command thanks again 💜
   🅰 The next best
   💌 if you want send message to owner **.bcowner**
-   version 3.0.4 ©
+   version 4.0.0 ©
     `)
     .setTimestamp()
         guild.owner.send(embed)
@@ -868,7 +868,7 @@ client.on('ready', () => {
           onoff: 'Off'
       }
   
-      if (message.content ==='.antiinfo') {
+      if (message.content ==='-antiinfo') {
       if(!message.channel.guild) return message.reply('This command only for servers');
           let perms = message.member.hasPermission(`MANAGE_GUILD`)
           if (!perms) return message.reply(`You don't have permissions: Manage Guild.`)
@@ -879,7 +879,7 @@ client.on('ready', () => {
               embed
           })
       }
-      if (message.content === '.antilinks') {
+      if (message.content === '-antilinks') {
       if(!message.channel.guild) return message.reply('This command only for servers');
           let perms = message.member.hasPermission(`MANAGE_GUILD`)
           if (!perms) return message.reply(`You don't have permissions`)
@@ -1142,7 +1142,7 @@ client.on('ready', () => {
   });
   
   client.on('message', message => {
-  if (message.content.startsWith(".myid")) {
+  if (message.content.startsWith("-myid")) {
   if (message.channel.type === 'dm') return message.reply('This command for server only');   
   var Canvas = module.require('canvas');
   var jimp = module.require('jimp');
@@ -1242,92 +1242,72 @@ client.on('ready', () => {
   });
   
   
-  client.on('message', message => {
-    if (message.content.startsWith(".nik")) {
-       if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
-      var Canvas = module.require('canvas');
-      var jimp = module.require('jimp');
-  const w = ['./lol/lol.png'];
-       let Image = Canvas.Image,
-           canvas = new Canvas(270, 480),
-           ctx = canvas.getContext('2d');
-       ctx.patternQuality = 'bilinear';
-       ctx.filter = 'bilinear';
-       ctx.antialias = 'subpixel';
-       ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-       ctx.shadowOffsetY = 2;
-       ctx.shadowBlur = 2;
-       fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-           if (err) return console.log(err);
-           let BG = Canvas.Image;
-           let ground = new Image;
-           ground.src = Background;
-           ctx.drawImage(ground, 0, 0, 270, 480);
-  })
-    var men = message.mentions.users.first();
-       var heg;
-       if(men) {
-           heg = men
-       } else {
-           heg = message.author
-       }
-     var mentionned = message.mentions.members.first();
-        var h;
-       if(mentionned) {
-           h = mentionned
-       } else {
-           h = message.member
-       }
-       var ment = message.mentions.users.first();
-       var getvalueof;
-       var a = message.author;
-  if(ment) {
-  getvalueof = ment;
-  } else {
-  getvalueof = message.author;
-  }
-  let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
-  jimp.read(url, (err, ava) => {
-  if (err) return console.log(err);
-  ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-  if (err) return console.log(err);
-  let Avatar = Canvas.Image;
-  let ava = new Avatar;
-  ava.src = buf;
-  ctx.beginPath();
-  ctx.drawImage(ava, 50, 20, 50, 50);
-  ctx.font = '35px Arial Bold';
-  ctx.fontSize = '40px';
-  ctx.fillStyle = "#dadada";
-  ctx.textAlign = "center";
-  ctx.font = '30px Arial Bold';
-  ctx.fontSize = '30px';
-  ctx.fillStyle = "#ffffff";
-  message.channel.sendFile(canvas.toBuffer());
-  let url = a.displayAvatarURL.endsWith(".webp") ? a.slice(5, -20) + ".png" : a.displayAvatarURL;
-  jimp.read(url, (err, ava) => {
-  if (err) return console.log(err);
-  ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-  if (err) return console.log(err);
-  let Avatar = Canvas.Image;
-  let ava = new Avatar;
-  ava.src = buf;
-  ctx.beginPath();
-  ctx.drawImage(ava, 100, 30, 100, 100);
-  ctx.font = '35px Arial Bold';
-  ctx.fontSize = '40px';
-  ctx.fillStyle = "#dadada";
-  ctx.textAlign = "center";
-  ctx.font = '30px Arial Bold';
-  ctx.fontSize = '30px';
-  ctx.fillStyle = "#ffffff";
-  message.channel.sendFile(canvas.toBuffer());
-  })                       
-  })
-  })
-  })
-  }
-  });
+client.on('message', message => {
+  if (message.content.startsWith("-nik")) {
+     if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
+    var Canvas = module.require('canvas');
+    var jimp = module.require('jimp');
+const w = ['./lol/lol.png'];
+     let Image = Canvas.Image,
+         canvas = new Canvas(270, 480),
+         ctx = canvas.getContext('2d');
+     ctx.patternQuality = 'bilinear';
+     ctx.filter = 'bilinear';
+     ctx.antialias = 'subpixel';
+     ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+     ctx.shadowOffsetY = 2;
+     ctx.shadowBlur = 2;
+     fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+         if (err) return console.log(err);
+         let BG = Canvas.Image;
+         let ground = new Image;
+         ground.src = Background;
+         ctx.drawImage(ground, 0, 0, 270, 480);
+})
+  var men = message.mentions.users.first();
+     var heg;
+     if(men) {
+         heg = men
+     } else {
+         heg = message.author
+     }
+   var mentionned = message.mentions.members.first();
+      var h;
+     if(mentionned) {
+         h = mentionned
+     } else {
+         h = message.member
+     }
+     var ment = message.mentions.users.first();
+     var getvalueof;
+     var a = message.author;
+if(ment) {
+getvalueof = ment;
+} else {
+getvalueof = message.author;
+}
+let url = a.displayAvatarURL.endsWith(".webp") ? a.slice(5, -20) + ".png" : a.displayAvatarURL;
+jimp.read(url, (err, ava) => {
+if (err) return console.log(err);
+ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+if (err) return console.log(err);
+let Avatar = Canvas.Image;
+let ava = new Avatar;
+ava.src = buf;
+ctx.beginPath();
+ctx.drawImage(ava, 100, 30, 100, 100);
+ctx.font = '35px Arial Bold';
+ctx.fontSize = '40px';
+ctx.fillStyle = "#dadada";
+ctx.textAlign = "center";
+ctx.font = '30px Arial Bold';
+ctx.fontSize = '30px';
+ctx.fillStyle = "#ffffff";
+message.channel.sendFile(canvas.toBuffer());
+})                       
+})
+}
+});
 
 
 const weather = require('weather-js');
@@ -1372,16 +1352,16 @@ const weather = require('weather-js');
     });
   
 
-         client.on('message', message => {
-            if (message.author.bot) return;
-             if (message.content === prefix + "invite") {
-            let embed = new Discord.RichEmbed()
-            .setAuthor('Get me on your server!')
-            .setTitle('__**Click to invite Gnar to your server.**__')
-           .setURL('https://discordapp.com/oauth2/authorize?client_id=464139412251344897&scope=bot&permissions=8')
-           message.channel.sendEmbed(embed);
-           }
-        });
+client.on('message', message => {
+  if (message.author.bot) return;
+   if (message.content === prefix + "invite" || message.content === prefix + "inv" || message.content === prefix + "INVITE" || message.content === prefix + "INV") {
+  let embed = new Discord.RichEmbed()
+  .setAuthor('Get me on your server!')
+  .setTitle('__**Click to invite Gnar to your server.**__')
+ .setURL('https://discordapp.com/oauth2/authorize?client_id=464139412251344897&scope=bot&permissions=8')
+ message.channel.sendEmbed(embed);
+ }
+});
 
 
 client.on('message', function(msg) {

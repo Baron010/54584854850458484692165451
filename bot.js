@@ -1643,9 +1643,9 @@ if(slots1 === slots2 && slots2 === slots3) {
 if(slots4 === slots5 && slots5 === slots6) {
 } else {
 if(slots7 === slots8 && slots8 === slots9) {
-we = "Win!"
+we = "win 😃"
 } else {
-we = "Lose!"
+we = "lose :frowning: "
 }
     message.channel.send(`
 |${slots1} | ${slots2} | ${slots3} |

@@ -1297,7 +1297,7 @@ let Avatar = Canvas.Image;
 let ava = new Avatar;
 ava.src = buf;
 ctx.beginPath();
-ctx.drawImage(ava, 50, 20, 50, 50);
+ctx.drawImage(ava, 150, 120, 50, 50);
 ctx.font = '35px Arial Bold';
 ctx.fontSize = '40px';
 ctx.fillStyle = "#dadada";

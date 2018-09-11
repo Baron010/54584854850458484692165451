@@ -1618,4 +1618,43 @@ message.channel.sendFile(canvas.toBuffer());
 });
 
 
+client.on('message', message => {
+  if(message.content.startsWith("-slots")) {
+
+    let slot1 = [':a:', ':regional_indicator_b:', '🅾', ':regional_indicator_c:', ':regional_indicator_d:', ':regional_indicator_f:', ':regional_indicator_g:', ':regional_indicator_h:'];
+    let slots1 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
+    let slots2 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
+    let slots3 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
+
+    let slot2 = [':a:', ':regional_indicator_b:', '🅾', ':regional_indicator_c:', ':regional_indicator_d:', ':regional_indicator_f:', ':regional_indicator_g:', ':regional_indicator_h:'];
+    let slots4 = `${slot2[Math.floor(Math.random() * slot2.length)]}`;
+    let slots5 = `${slot2[Math.floor(Math.random() * slot2.length)]}`;
+    let slots6 = `${slot2[Math.floor(Math.random() * slot2.length)]}`;
+
+
+    let slot3 = [':a:', ':regional_indicator_b:', '🅾', ':regional_indicator_c:', ':regional_indicator_d:', ':regional_indicator_f:', ':regional_indicator_g:', ':regional_indicator_h:'];
+    let slots7 = `${slot3[Math.floor(Math.random() * slot3.length)]}`;
+    let slots8 = `${slot3[Math.floor(Math.random() * slot3.length)]}`;
+    let slots9 = `${slot3[Math.floor(Math.random() * slot3.length)]}`;
+
+    let we;
+if(slots1 === slots2 && slots2 === slots3) {
+} else {
+if(slots4 === slots5 && slots5 === slots6) {
+} else {
+if(slots7 === slots8 && slots8 === slots9) {
+we = "Win!"
+} else {
+we = "Lose!"
+}
+    message.channel.send(`
+|${slots1} | ${slots2} | ${slots3} |
+|${slots4} | ${slots5} | ${slots6} ◀ ${we}
+|${slots7} | ${slots8} | ${slots9} |  `)
+  }
+}
+}
+  });
+
+
 client.login(process.env.BOT_TOKEN);

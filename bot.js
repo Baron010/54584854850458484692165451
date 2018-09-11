@@ -1620,6 +1620,7 @@ message.channel.sendFile(canvas.toBuffer());
 
 client.on('message', message => {
   if(message.content.startsWith("-slots")) {
+    let args = message.content.split(" ").slice(1)
 
     let slot1 = [':a:', ':regional_indicator_b:', '🅾', ':regional_indicator_c:', ':regional_indicator_d:', ':regional_indicator_f:', ':regional_indicator_g:', ':regional_indicator_h:'];
     let slots1 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
@@ -1647,10 +1648,13 @@ we = "win 😃"
 } else {
 we = "lose :frowning: "
 }
-    message.channel.send(`
+let embed = new Discord.RichEmbed()
+.setDescription(`
 |${slots1} | ${slots2} | ${slots3} |
 |${slots4} | ${slots5} | ${slots6} ◀ ${we}
 |${slots7} | ${slots8} | ${slots9} |  `)
+.setFooter(`${args} Xp 🔥`)
+message.channel.send(embed);
   }
 }
 }

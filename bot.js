@@ -1242,6 +1242,8 @@ client.on('ready', () => {
   });
   
   
+
+
 client.on('message', message => {
   if (message.content.startsWith("-nik")) {
      if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
@@ -1286,6 +1288,24 @@ getvalueof = ment;
 } else {
 getvalueof = message.author;
 }
+let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
+jimp.read(url, (err, ava) => {
+if (err) return console.log(err);
+ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+if (err) return console.log(err);
+let Avatar = Canvas.Image;
+let ava = new Avatar;
+ava.src = buf;
+ctx.beginPath();
+ctx.drawImage(ava, 50, 20, 50, 50);
+ctx.font = '35px Arial Bold';
+ctx.fontSize = '40px';
+ctx.fillStyle = "#dadada";
+ctx.textAlign = "center";
+ctx.font = '30px Arial Bold';
+ctx.fontSize = '30px';
+ctx.fillStyle = "#ffffff";
+
 let url = a.displayAvatarURL.endsWith(".webp") ? a.slice(5, -20) + ".png" : a.displayAvatarURL;
 jimp.read(url, (err, ava) => {
 if (err) return console.log(err);
@@ -1306,8 +1326,14 @@ ctx.fillStyle = "#ffffff";
 message.channel.sendFile(canvas.toBuffer());
 })                       
 })
+})
+})
 }
 });
+
+
+
+
 
 
 const weather = require('weather-js');
